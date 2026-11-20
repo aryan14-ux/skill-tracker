@@ -1,10 +1,13 @@
-const app = require('../backend/src/app');
-const { sequelize } = require('../backend/src/models');
-const { setMySQLConnected } = require('../backend/src/config/memoryStore');
+const express = require('express');
+const app = require('./app');
+const { sequelize } = require('./models');
+const { setMySQLConnected } = require('./config/memoryStore');
+
+const service = express();
 
 let connection;
 
-module.exports = async function handler(req, res) {
+service.use(async function handler(req, res) {
   if (!process.env.JWT_SECRET) {
     return res.status(503).json({ success: false, message: 'Set JWT_SECRET in the deployment environment.' });
   }
@@ -25,4 +28,7 @@ module.exports = async function handler(req, res) {
   }
 
   return app(req, res);
-};
+});
+
+// Vercel owns the HTTP listener. Local development uses src/server.js.
+module.exports = service;

@@ -4,7 +4,7 @@
 
 1. In Vercel, choose **Add New > Project** and import `aryan14-ux/skill-tracker`.
 2. Keep **Root Directory** at the repository root (`./`), not `frontend`.
-3. Use **Other** as the framework preset. The checked-in `vercel.json` sets installation to `npm ci`, build to `npm run build`, and output to `frontend/dist`.
+3. Keep **Services** as the Application Preset. The checked-in `vercel.json` declares `frontend` (Vite) and `backend` (Express). If the import screen was already open, click **Refresh** in the multi-service panel to reload the latest configuration. Do not select either **Import single project** button.
 4. Add an environment variable named `JWT_SECRET` with a long random value. Generate one locally with:
 
    ```sh
@@ -14,7 +14,7 @@
 5. Leave `VITE_API_URL` unset so the frontend uses `/api` on the same deployment. Do not set it to localhost.
 6. Click **Deploy**. Open `/api/health`, then `/login` and try a demo account. Refresh `/student/dashboard` after signing in to check client-side routing.
 
-The React frontend and Express API deploy together. No separate API hosting is needed for the demo. Future pushes to `main` trigger Vercel deployments once the repository is connected.
+The React frontend and Express API deploy together. `/api/*` and `/uploads/*` route to the backend with their original paths; remaining requests route to the frontend. The frontend builds from `frontend` using `npm run build` and serves `dist`, with a fallback for React page refreshes. Express uses `backend/src/vercel.js`, which exports the app without opening a listener or seeding the database. No separate API hosting is needed for the demo. Future pushes to `main` trigger Vercel deployments once the repository is connected.
 
 ## Data persistence and uploads
 
@@ -56,4 +56,4 @@ Open http://localhost:3000. On Windows PowerShell, use `npm.cmd` if script execu
 
 Run `npm test` for regression checks and `npm run build` for a production frontend build.
 
-References: [Vercel project configuration](https://vercel.com/docs/project-configuration/vercel-json), [function limits](https://vercel.com/docs/functions/limitations), [function runtimes and temporary storage](https://vercel.com/docs/functions/runtimes).
+References: [Vercel Services guide](https://vercel.com/kb/guide/vercel-services), [Vercel project configuration](https://vercel.com/docs/project-configuration/vercel-json), [function limits](https://vercel.com/docs/functions/limitations), [function runtimes and temporary storage](https://vercel.com/docs/functions/runtimes).

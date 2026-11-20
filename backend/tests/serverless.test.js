@@ -6,7 +6,7 @@ const express = require('express');
 process.env.VERCEL = '1';
 delete process.env.DB_HOST;
 process.env.JWT_SECRET = 'test-only-serverless-secret';
-const handler = require('../../api/index');
+const handler = require('../src/vercel');
 
 test('serverless handler serves health and demo authentication without starting a database', async t => {
   const app = express();
