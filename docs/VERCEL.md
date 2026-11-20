@@ -4,7 +4,7 @@
 
 1. In Vercel, choose **Add New > Project** and import `aryan14-ux/skill-tracker`.
 2. Keep **Root Directory** at the repository root (`./`), not `frontend`.
-3. Keep **Root Directory** at the repository root and use the standard Vercel project settings. The checked-in `vercel.json` builds the Vite frontend and exposes the Express backend through `api/index.js`.
+3. Keep **Root Directory** at the repository root and import the project using Vercel **Services**. The checked-in `vercel.json` declares separate `frontend` (Vite) and `backend` (Express) services.
 4. Add an environment variable named `JWT_SECRET` with a long random value. Generate one locally with:
 
    ```sh

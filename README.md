@@ -3,7 +3,7 @@
 
 ## Deploy on Vercel
 
-Import this repository with **Root Directory `./`** and standard Vercel project settings. Set a random `JWT_SECRET` environment variable; leave `VITE_API_URL` unset. The frontend build, Express API function, API routing, and React page refreshes are configured in `vercel.json`.
+Import this repository with **Root Directory `./`** and Vercel Services. Set a random `JWT_SECRET` environment variable; leave `VITE_API_URL` unset. The separate frontend and backend services, API routing, and React page refreshes are configured in `vercel.json`.
 
 See [the Vercel deployment guide](docs/VERCEL.md) for setup, database persistence, upload limitations, and local commands. Without MySQL, the deployed app uses temporary demo data; accounts and edits are not durable.
 
