@@ -1,0 +1,13 @@
+{
+  "name": "skill-tracker",
+  "version": "2.0.0",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "engines": { "node": "24.x" },
+  "scripts": {
+    "dev": "npm run dev --workspace frontend",
+    "start": "npm start --workspace backend",
+    "build": "npm run build --workspace frontend",
+    "test": "node --test backend/tests/*.test.js"
+  }
+}
